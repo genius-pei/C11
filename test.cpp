@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-namespace bit
+namespace yiming
 {
 	class string
 	{
@@ -80,7 +80,7 @@ namespace bit
 			return *this;
 		}
 
-		// s4 = bit::string("yyyyy");
+		// s4 = yiming::string("yyyyy");
 		string& operator=(string&& s)
 		{
 			cout << "string& operator=(string&& s) -- 移动赋值" << endl;
@@ -176,29 +176,29 @@ namespace bit
 
 int main()
 {
-	//bit::string s1("xxxxx");
+	//yiming::string s1("xxxxx");
 	//// 拷贝构造
-	//bit::string s2 = s1;
+	//yiming::string s2 = s1;
 	//// 构造+移动构造，优化后直接构造
-	//bit::string s3 = bit::string("yyyyy");
+	//yiming::string s3 = yiming::string("yyyyy");
 
 	//// 移动构造
-	//bit::string s4 = move(s1);
+	//yiming::string s4 = move(s1);
 
 	//cout << "******************************" << endl;
 
-	//bit::string s5("yyyyyyyyyyyyyyyyy");
+	//yiming::string s5("yyyyyyyyyyyyyyyyy");
 	//s3 = s5;
-	//s4 = bit::string("yyyyy");
+	//s4 = yiming::string("yyyyy");
 
 	//const string& r1 = "1111111";
 
-	/*bit::string ret = bit::addStrings("11111", "2222");
+	/*yiming::string ret = yiming::addStrings("11111", "2222");
 	cout << &ret << endl;
 	cout << ret.c_str() << endl;*/
 
-	bit::string ret;
-	ret = bit::addStrings("11111", "2222");
+	yiming::string ret;
+	ret = yiming::addStrings("11111", "2222");
 	//cout << &ret << endl;
 	cout << ret.c_str() << endl;
 
