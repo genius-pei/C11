@@ -214,7 +214,7 @@ namespace yiming
 
 
 
- 由于引用折叠限定，f1实例化以后总是一个左值引用
+ //由于引用折叠限定，f1实例化以后总是一个左值引用
 template<class T>
 void f1(T& x)
 {}
