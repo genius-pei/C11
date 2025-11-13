@@ -265,9 +265,9 @@ int main()
 	f2<int&>(n);
 	//f2<int&>(0); // 报错
 
-	// 折叠->实例化为void f2(int&& x)
-	//f2<int&&>(n); // 报错
-	f2<int&&>(0);
+	//// 折叠->实例化为void f2(int&& x)
+	////f2<int&&>(n); // 报错
+	//f2<int&&>(0);
 
 	return 0;
 }
