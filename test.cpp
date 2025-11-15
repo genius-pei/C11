@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 
+ï»¿#define _CRT_SECURE_NO_WARNINGS 
 #include<iostream>
 using namespace std;
 
@@ -33,16 +33,16 @@ namespace yiming
 			:_size(strlen(str))
 			, _capacity(_size)
 		{
-			cout << "string(char* str)-¹¹Ôì" << endl;
+			cout << "string(char* str)-æ„é€ " << endl;
 			_str = new char[_capacity + 1];
 			strcpy(_str, str);
 		}
 
-		// ¿½±´¹¹Ôì
+		// æ‹·è´æ„é€ 
 		string(const string& s)
 			:_str(nullptr)
 		{
-			cout << "string(const string& s) -- ¿½±´¹¹Ôì" << endl;
+			cout << "string(const string& s) -- æ‹·è´æ„é€ " << endl;
 			reserve(s._capacity);
 			for (auto ch : s)
 			{
@@ -57,16 +57,16 @@ namespace yiming
 			std::swap(_capacity, tmp._capacity);
 		}
 
-		// ÒÆ¶¯¹¹Ôì
+		// ç§»åŠ¨æ„é€ 
 		string(string&& s)
 		{
-			cout << "string(string&& s) -- ÒÆ¶¯¹¹Ôì" << endl;
+			cout << "string(string&& s) -- ç§»åŠ¨æ„é€ " << endl;
 			swap(s);
 		}
 
 		string& operator=(const string& s)
 		{
-			cout << "string& operator=(const string& s) -- ¿½±´¸³Öµ" << endl;
+			cout << "string& operator=(const string& s) -- æ‹·è´èµ‹å€¼" << endl;
 			if (this != &s)
 			{
 				_str[0] = '\0';
@@ -83,7 +83,7 @@ namespace yiming
 		// s4 = yiming::string("yyyyy");
 		string& operator=(string&& s)
 		{
-			cout << "string& operator=(string&& s) -- ÒÆ¶¯¸³Öµ" << endl;
+			cout << "string& operator=(string&& s) -- ç§»åŠ¨èµ‹å€¼" << endl;
 
 			swap(s);
 			return *this;
@@ -179,12 +179,12 @@ namespace yiming
 //int main()
 //{
 //	//yiming::string s1("xxxxx");
-//	//// ¿½±´¹¹Ôì
+//	//// æ‹·è´æ„é€ 
 //	//yiming::string s2 = s1;
-//	//// ¹¹Ôì+ÒÆ¶¯¹¹Ôì£¬ÓÅ»¯ºóÖ±½Ó¹¹Ôì
+//	//// æ„é€ +ç§»åŠ¨æ„é€ ï¼Œä¼˜åŒ–åç›´æ¥æ„é€ 
 //	//yiming::string s3 = yiming::string("yyyyy");
 //
-//	//// ÒÆ¶¯¹¹Ôì
+//	//// ç§»åŠ¨æ„é€ 
 //	//yiming::string s4 = move(s1);
 //
 //	//cout << "******************************" << endl;
@@ -207,67 +207,119 @@ namespace yiming
 //	return 0;
 //}
 
+//
+//#include<list>
+//#include<set>
+//
+//
+//
+//
+// //ç”±äºå¼•ç”¨æŠ˜å é™å®šï¼Œf1å®ä¾‹åŒ–ä»¥åæ€»æ˜¯ä¸€ä¸ªå·¦å€¼å¼•ç”¨
+//template<class T>
+//void f1(T& x)
+//{}
+//
+//// ç”±äºå¼•ç”¨æŠ˜å é™å®šï¼Œf2å®ä¾‹åŒ–åå¯ä»¥æ˜¯å·¦å€¼å¼•ç”¨ï¼Œä¹Ÿå¯ä»¥æ˜¯å³å€¼å¼•ç”¨ï¼Œä¸‡èƒ½å¼•ç”¨
+//template<class T>
+//void f2(T&& x)
+//{}
+//
+//int main()
+//{
+//	typedef int& lref;
+//	//typedef int&& rref;
+//	using rref = int&&;
+//
+//	int n = 0;
+//
+//	lref& r1 = n; // r1 çš„ç±»å‹æ˜¯ int&
+//	lref&& r2 = n; // r2 çš„ç±»å‹æ˜¯ int&
+//	rref& r3 = n; // r3 çš„ç±»å‹æ˜¯ int&
+//	rref&& r4 = 1; // r4 çš„ç±»å‹æ˜¯ int&&
+//
+//	// æ²¡æœ‰æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f1(int& x)
+//	f1<int>(n);
+//	//f1<int>(0); // æŠ¥é”™
+//
+//	// æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f1(int& x)
+//	f1<int&>(n);
+//	//f1<int&>(0); // æŠ¥é”™
+//
+//	// æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f1(int& x)
+//	f1<int&&>(n);
+//	//f1<int&&>(0); // æŠ¥é”™
+//
+//	// æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f1(const int& x)
+//	f1<const int&>(n);
+//	f1<const int&>(0);
+//
+//	// æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f1(const int& x)
+//	f1<const int&&>(n);
+//	f1<const int&&>(0);
+//
+//	// æ²¡æœ‰æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f2(int&& x)
+//	//f2<int>(n); // æŠ¥é”™
+//	f2<int>(0);
+//
+//	// æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f2(int& x)
+//	f2<int&>(n);
+//	//f2<int&>(0); // æŠ¥é”™
+//
+//	//// æŠ˜å ->å®ä¾‹åŒ–ä¸ºvoid f2(int&& x)
+//	////f2<int&&>(n); // æŠ¥é”™
+//	//f2<int&&>(0);
+//
+//	return 0;
+//}
 
-#include<list>
-#include<set>
+//namespace yiming
+//{
+//	template <class _Ty>
+//	_Ty&& forward(remove_reference_t<_Ty>& _Arg) noexcept
+//	{ // forward an lvalue as either an lvalue or an rvalue
+//		return static_cast<_Ty&&>(_Arg);
+//	}
+//	void Fun(int& x) { cout << "å·¦å€¼å¼•ç”¨" << endl; }
+//	void Fun(const int& x) { cout << "const å·¦å€¼å¼•ç”¨" << endl; }
+//	void Fun(int&& x) { cout << "å³å€¼å¼•ç”¨" << endl; }
+//	void Fun(const int&& x) { cout << "const å³å€¼å¼•ç”¨" << endl; }
+//	template<class T>
+//	void Function(T&& t)
+//	{
+//		//Fun(t);
+//		Fun(forward<T>(t));
+//	}
+//}
+//int main()
+//{
+//	// 10æ˜¯å³å€¼ï¼Œæ¨å¯¼å‡ºTä¸ºintï¼Œæ¨¡æ¿å®ä¾‹åŒ–ä¸ºvoid Function(int&& t) 
+//	yiming::Function(10); // å³å€¼ 
+//	int a;
+//	// aæ˜¯å·¦å€¼ï¼Œæ¨å¯¼å‡ºTä¸ºint&ï¼Œå¼•â½¤æŠ˜å ï¼Œæ¨¡æ¿å®ä¾‹åŒ–ä¸ºvoid Function(int& t) 
+//	yiming::Function(a); // å·¦å€¼ 
+//	// std::move(a)æ˜¯å³å€¼ï¼Œæ¨å¯¼å‡ºTä¸ºintï¼Œæ¨¡æ¿å®ä¾‹åŒ–ä¸ºvoid Function(int&& t) 
+//	yiming::Function(std::move(a)); // å³å€¼ 
+//	const int b = 8;
+//	// aæ˜¯å·¦å€¼ï¼Œæ¨å¯¼å‡ºTä¸ºconst int&ï¼Œå¼•â½¤æŠ˜å ï¼Œæ¨¡æ¿å®ä¾‹åŒ–ä¸ºvoid Function(const int& 
+//	//t)
+//	yiming::Function(b); // const å·¦å€¼ 
+//	// std::move(b)å³å€¼ï¼Œæ¨å¯¼å‡ºTä¸ºconst intï¼Œæ¨¡æ¿å®ä¾‹åŒ–ä¸ºvoid Function(const int&& 
+//	//t)
+//	yiming::Function(std::move(b)); // const å³å€¼ 
+//	return 0;
+//}
 
-
-
-
- //ÓÉÓÚÒıÓÃÕÛµşÏŞ¶¨£¬f1ÊµÀı»¯ÒÔºó×ÜÊÇÒ»¸ö×óÖµÒıÓÃ
-template<class T>
-void f1(T& x)
-{}
-
-// ÓÉÓÚÒıÓÃÕÛµşÏŞ¶¨£¬f2ÊµÀı»¯ºó¿ÉÒÔÊÇ×óÖµÒıÓÃ£¬Ò²¿ÉÒÔÊÇÓÒÖµÒıÓÃ£¬ÍòÄÜÒıÓÃ
-template<class T>
-void f2(T&& x)
-{}
-
+template <class ...Args>
+void Print(Args&&... args)
+{
+	cout << sizeof...(args) << endl;
+}
 int main()
 {
-	typedef int& lref;
-	//typedef int&& rref;
-	using rref = int&&;
-
-	int n = 0;
-
-	lref& r1 = n; // r1 µÄÀàĞÍÊÇ int&
-	lref&& r2 = n; // r2 µÄÀàĞÍÊÇ int&
-	rref& r3 = n; // r3 µÄÀàĞÍÊÇ int&
-	rref&& r4 = 1; // r4 µÄÀàĞÍÊÇ int&&
-
-	// Ã»ÓĞÕÛµş->ÊµÀı»¯Îªvoid f1(int& x)
-	f1<int>(n);
-	//f1<int>(0); // ±¨´í
-
-	// ÕÛµş->ÊµÀı»¯Îªvoid f1(int& x)
-	f1<int&>(n);
-	//f1<int&>(0); // ±¨´í
-
-	// ÕÛµş->ÊµÀı»¯Îªvoid f1(int& x)
-	f1<int&&>(n);
-	//f1<int&&>(0); // ±¨´í
-
-	// ÕÛµş->ÊµÀı»¯Îªvoid f1(const int& x)
-	f1<const int&>(n);
-	f1<const int&>(0);
-
-	// ÕÛµş->ÊµÀı»¯Îªvoid f1(const int& x)
-	f1<const int&&>(n);
-	f1<const int&&>(0);
-
-	// Ã»ÓĞÕÛµş->ÊµÀı»¯Îªvoid f2(int&& x)
-	//f2<int>(n); // ±¨´í
-	f2<int>(0);
-
-	// ÕÛµş->ÊµÀı»¯Îªvoid f2(int& x)
-	f2<int&>(n);
-	//f2<int&>(0); // ±¨´í
-
-	//// ÕÛµş->ÊµÀı»¯Îªvoid f2(int&& x)
-	////f2<int&&>(n); // ±¨´í
-	//f2<int&&>(0);
-
+	double x = 2.2;
+	Print(); // åŒ…â¾¥æœ‰0ä¸ªå‚æ•° 
+	Print(1); // åŒ…â¾¥æœ‰1ä¸ªå‚æ•° 
+	Print(1, string("xxxxx")); // åŒ…â¾¥æœ‰2ä¸ªå‚æ•° 
+	Print(1.1, string("xxxxx"), x); // åŒ…â¾¥æœ‰3ä¸ªå‚æ•° 
 	return 0;
 }
