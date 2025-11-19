@@ -308,18 +308,26 @@ namespace yiming
 //	yiming::Function(std::move(b)); // const 右值 
 //	return 0;
 //}
+//
+//template <class ...Args>
+//void Print(Args&&... args)
+//{
+//	cout << sizeof...(args) << endl;
+//}
+//int main()
+//{
+//	double x = 2.2;
+//	Print(); // 包⾥有0个参数 
+//	Print(1); // 包⾥有1个参数 
+//	Print(1, string("xxxxx")); // 包⾥有2个参数 
+//	Print(1.1, string("xxxxx"), x); // 包⾥有3个参数 
+//	return 0;
+//}
 
-template <class ...Args>
-void Print(Args&&... args)
-{
-	cout << sizeof...(args) << endl;
-}
 int main()
 {
-	double x = 2.2;
-	Print(); // 包⾥有0个参数 
-	Print(1); // 包⾥有1个参数 
-	Print(1, string("xxxxx")); // 包⾥有2个参数 
-	Print(1.1, string("xxxxx"), x); // 包⾥有3个参数 
+
+	auto add1 = [](int x, int y)->int {return x + y;};
+	cout << add1(1, 4) << endl;
 	return 0;
 }
