@@ -324,10 +324,38 @@ namespace yiming
 //	return 0;
 //}
 
+#include<functional>
+//int main()
+//{
+//
+//	/*auto add1 = [](int x, int y)->int {return x + y;};
+//	cout << add1(1, 4) << endl;
+//
+//	int a = 1, b = 3, c = 5;
+//	auto func1 = [&]
+//	{
+//		a++;
+//		b++;
+//		return a + b - c;
+//	};
+//	cout << func1() << endl;*/
+//
+//
+// 	return 0;
+//}
+
+using placeholders::_1;
+using placeholders::_2;
+
+int sub(int a, int b)
+{
+	return a - b;
+
+}
 int main()
 {
-
-	auto add1 = [](int x, int y)->int {return x + y;};
-	cout << add1(1, 4) << endl;
+	cout << sub(5, 7) << endl;
+	auto newsub = bind(sub, _2, _1);
+	cout << newsub(5, 7) << endl;
 	return 0;
 }
