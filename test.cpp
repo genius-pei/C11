@@ -346,16 +346,28 @@ namespace yiming
 
 using placeholders::_1;
 using placeholders::_2;
-
-int sub(int a, int b)
+//
+//int sub(int a, int b)
+//{
+//	return a - b;
+//
+//}
+//int main()
+//{
+//	cout << sub(5, 7) << endl;
+//	auto newsub = bind(sub, _2, _1);
+//	cout << newsub(5, 7) << endl;
+//	return 0;
+//}
+int add(int x, int y)
 {
-	return a - b;
-
+	return x + y;
 }
 int main()
 {
-	cout << sub(5, 7) << endl;
-	auto newsub = bind(sub, _2, _1);
-	cout << newsub(5, 7) << endl;
+	int&& a1 = add(3, 5);
+	int a2 = add(3, 5);
+	cout << a1 << endl;
+	cout << a2 << endl;
 	return 0;
 }
